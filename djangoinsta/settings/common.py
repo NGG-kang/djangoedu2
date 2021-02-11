@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Thrid Apps
     'debug_toolbar',
+    'bootstrap4',
     # Sub Apps
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +90,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# 기본 유저모델 AUTH_USER_MODEL = "auth.User"
+# 커스텀 하려면 뒤의걸 바꿔야함
+AUTH_USER_MODEL = "accounts.User"
 
 
 # Password validation
@@ -136,3 +142,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 INTERNAL_IPS = ['127.0.0.1',]
+
+
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = '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' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
