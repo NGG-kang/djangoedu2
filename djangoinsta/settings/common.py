@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Thrid Apps
     'debug_toolbar',
     'bootstrap4',
+    'django_pydenticon',
     # Sub Apps
     'accounts',
 ]
@@ -141,13 +142,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-INTERNAL_IPS = ['127.0.0.1',]
+INTERNAL_IPS = ['127.0.0.1', ]
 
 
-SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = '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' # this is exactly the value 'apikey'
+EMAIL_HOST_USER = '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' # this is exactly the value 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+WELCOME_EMAIL_SENDER = "skarndrkd1222@gmail.com"
+ADMINS = [
+    ('kang Nam Gung', 'skarndrkd1222@gmail.com'),
+]
