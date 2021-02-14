@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header">
+        <img src="{{ user.avatar_url }}" style="width: 24px; height:24px;"/>
+        <a href="{% url 'instagram:user_page' post.author.username %}">{{ post.author.name }}</a>
+
+    </div>
+    <div class="card-body">
+        <img src="{{ post.photo.url }}" style="width:100%"/>
+    </div>
+    <div class="card-footer">
+        {% for tag in post.tag_set.all %}
+        <span class="badge badge-primary">
+            #{{ tag.name }}
+        </span>
+        {% endfor %}
+    </div>
+</div>
