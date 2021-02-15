@@ -11,12 +11,14 @@ from django.contrib.auth.views import (
     )
 from django.contrib.auth import login as auth_login
 from .models import User
-
+from django.core.mail import send_mail
 login = LoginView.as_view(template_name="accounts/login_form.html")
+
 
 def logout(request):
     messages.success(request, "로그아웃 되었습니다.")
     return logout_then_login(request)
+
 
 def signup(request):
     if request.method == 'POST':
@@ -35,7 +37,7 @@ def signup(request):
         'form': form
     })
 
-from django.core.mail import send_mail
+
 def sendMail(requset):
     send_mail('Subject here', 'Here is the message.', 'skarndrkd1222@gmail.com', ['skarndrkd1222@gmail.com'], fail_silently=False)
     return render(requset, '/')
@@ -67,6 +69,7 @@ class PasswordChangeView(LoginRequiredMixin, AuthPasswordChangeView):
 
 
 password_change = PasswordChangeView.as_view()
+
 
 @login_required
 def user_follow(request, username):
